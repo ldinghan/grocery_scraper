@@ -4,13 +4,13 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import time
 
-def scrape(query):
+def scrape(query, chromedriverpath):
 	chrome_options = Options()
 	chrome_options.add_argument('--headless')
 	chrome_options.add_argument('--no-sandbox')
 
 	url = f"https://giant.sg/search?q={query}"
-	s = Service("C:/Users/user/.wdm/drivers/chromedriver/win32/99.0.4844.51/chromedriver.exe")
+	s = Service(chromedriverpath)
 
 	def scrollFunction(numberOfScrolls):
 		for i in range(numberOfScrolls):

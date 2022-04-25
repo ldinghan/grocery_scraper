@@ -3,6 +3,7 @@ from giant_scraper import scrape as GIANTscrape
 from displaydata import getSheet
 
 def main():
+	chromedriver_path = "C:/Users/user/.wdm/drivers/chromedriver/win32/99.0.4844.51/chromedriver.exe"
 	count = 0
 	with open('grocery.txt', 'r') as f:
 		items = f.readlines()
@@ -12,7 +13,7 @@ def main():
 		for query in items:
 			print("\n")
 			print(query)
-			getSheet(query, NTUCscrape(query), GIANTscrape(query))
+			getSheet(query, NTUCscrape(query, chromedriver_path), GIANTscrape(query, chromedriver_path))
 			count += 1
 			print(f'{count} item(s) out of {total} completed')
 
