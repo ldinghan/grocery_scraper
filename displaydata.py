@@ -1,11 +1,9 @@
-from giant_scraper import scrape as GIANTscrape
 from ntuc_scraper import scrape as NTUCscrape
-import xlwt
 from xlwt import Workbook
 
 
 wb = Workbook()
-def getSheet(query, ntuc_data, giant_data):
+def getSheet(query, ntuc_data):
 	sheet1 = wb.add_sheet(query)
 	sheet1.write(0, 0, "STORE")
 	sheet1.write(0, 1, "ITEM")
@@ -24,12 +22,4 @@ def getSheet(query, ntuc_data, giant_data):
 			cwidth = sheet1.col(j+1).width
 			if (len(item[key])*367) > cwidth:
 				sheet1.col(j+1).width = len(item[key])*367
-	for i, item in enumerate(giant_data):
-		sheet1.write(i+1+len(ntuc_data), 0, "GIANT")
-		for j, key in enumerate(item):
-			sheet1.write(i+1+len(ntuc_data), j+1, item[key])
-			cwidth = sheet1.col(j+1).width
-			if (len(item[key])*367) > cwidth:
-				sheet1.col(j+1).width = len(item[key])*367
-
-	wb.save('xlwt result.xls')
+	wb.save('xlwt_result.xls')
